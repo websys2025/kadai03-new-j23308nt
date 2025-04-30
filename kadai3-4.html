@@ -24,18 +24,38 @@
 
                 // 配列の内容を項目毎に出力
                 // ここにコードを書く
+                for (let i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    console.log("商品番号: "+item.id+", 商品名: "+item.name+", 金額: "+item.price+", 在庫数: "+item.stock);
+                }
+
                 console.log(""); // 空行の出力
             }
 
             // 商品購入の関数
             function buyItem(no) {
                 // ここにコードを書く
+                if (no < 1 || no > items.length) {
+                    console.log(no + "は無効な商品番号です。番号は1～8で指定してください。");
+                    return;
+                }
+
+                
+
+                const item = items[no - 1];
+
+                if (item.stock > 0) {
+                    console.log("商品番号: "+item.id +", 商品名: "+item.name+"を購入します。");
+                    item.stock--;
+                } else {
+                    console.log("商品番号: "+item.id+", 商品名: "+item.name+"を購入します。\n在庫がありません。");
+                }
+
                 showItemList(); // 商品一覧の表示関数呼び出し
             }
 
             showItemList(); // 商品一覧の表示関数呼び出し
             buyItem(3); // 商品購入の関数呼び出し
-
             buyItem(5); // 商品購入の関数呼び出し
             buyItem(5); // 商品購入の関数呼び出し
 
